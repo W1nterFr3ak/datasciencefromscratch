@@ -1,4 +1,6 @@
 from typing import List
+from collections import Counter
+
 
 Vector = List[float]
 
@@ -21,3 +23,36 @@ def median(v: Vector) -> float:
 
 
 assert median([1,10,2,9,5]) == 5
+assert median([1,7,8,10]) == (7+8) / 2
+
+def quantile(xs: Vector, p: float) -> float:
+    """returns the pth-percentle"""
+    p_index = int(p * len(xs))
+
+    return sorted(xs)[p_index]
+grades = [95,80, 75,62,62]
+
+
+assert quantile(grades, 0.10) == 62
+assert quantile(grades, 0.25) == 62
+assert quantile(grades, 0.75) == 80
+assert quantile(grades, 0.90) == 95
+
+
+def mode (xs: Vector) -> Vector:
+    """returns vector(list) of most common"""
+
+    counts = Counter(xs)
+
+    m_count = max(counts.values())
+
+    return [xs_i for xs_i, count in counts.items() if count == m_count]
+
+
+assert mode(grades) == [62]
+
+def dat_range(xs: Vector) -> float:
+
+    return max(xs) - min(xs)
+
+assert dat_range(grades) == 33
