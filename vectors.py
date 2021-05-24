@@ -64,7 +64,7 @@ def vector_mean(vectors: List[Vector]) -> Vector:
 
 assert vector_mean([[1,2],[3,4],[5,6]]) == [3,4]
 
-def dot(v: Vector, w: Vector):
+def dot(v: Vector, w: Vector) -> float:
     """v_1 * w_1 + .... + v_n * v_n"""
     two_vector_eq(v,w)
 
